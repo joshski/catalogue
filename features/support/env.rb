@@ -9,9 +9,10 @@ if ENV["MECHANIZE"] == "true"
 end
 
 Cappie.start(
-  command: './node_modules/.bin/pogo server.pogo',
+  command: '../node_modules/.bin/pogo server.pogo',
   await: /listening at 4647/,
   host: 'http://localhost:4647',
   driver: driver,
-  environment: { PORT: '4647' }
+  environment: { PORT: '4647' },
+  working_dir: './app'
 )

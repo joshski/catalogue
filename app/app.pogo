@@ -5,6 +5,7 @@ exports.create app (options) =
 
     app = express()
     app.set 'view engine' 'jade'
+    app.set 'views' "#(__dirname)/views"
 
     app.get '/' @(req, res)
         repo.search (req.query) @(err, results)

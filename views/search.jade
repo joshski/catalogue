@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Search
+  form#search
+    input(type='text', name='keywords', placeholder='keywords', value="#{criteria.keywords || ''}")
+    input(type='submit', value='Search')
+
+  h2 Results
+  div
+    span= results.total
+    &nbsp;
+    span hits
+
+  ul#results
+    each hit in results.hits
+      li
+        a(href= '/items/' + hit.id)= hit.name

@@ -7,12 +7,15 @@ block content
         input(type='submit', value='Search')
 
     h2 Results
-    div
+    #count
         span= results.total
         &nbsp;
         span hits
 
-    ul#results
-        each hit in results.hits
-            li
-                a(href= '/items/' + hit.id)= hit.name
+    #results
+        ul
+            each hit in results.hits
+                li
+                    a(href= '/items/' + hit.id)= hit.name
+
+    #detail &nbsp;

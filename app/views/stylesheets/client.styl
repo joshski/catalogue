@@ -1,2 +1,57 @@
+header-height = 40px
+
 *
   font-family sans-serif
+
+body
+  margin 0
+  padding 0
+
+#header
+  height header-height
+  position fixed
+  top 0
+  background-color #444
+  width 100%
+  z-index 99999
+  form
+    margin 10px 10px
+
+#detail
+  position fixed
+  right 0
+  top header-height
+  bottom 0
+  left 0
+  background-color #efefef
+  padding-left 10px
+
+#results
+  margin-top header-height
+  margin-left 10px
+
+  #count
+    padding 20px 0
+
+  ul
+    margin 0
+    padding 0
+
+  li
+    display inline-block
+    border 1px solid #ddd
+    width 140px
+    height 200px
+    margin-right 10px
+    margin-bottom 10px
+    position relative
+
+    a
+      position absolute
+      bottom 0
+      background-color #efefef
+      text-decoration none
+      width 100%
+      text-indent 4px
+      height 30px
+      line-height 30px

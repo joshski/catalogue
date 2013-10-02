@@ -1,1 +1,10 @@
 *{font-family:sans-serif}
+body{margin:0;padding:0}
+#header{height:40px;position:fixed;top:0;background-color:#444;width:100%;z-index:99999;}
+#header form{margin:10px 10px}
+#detail{position:fixed;right:0;top:40px;bottom:0;left:0;background-color:#efefef;padding-left:10px}
+#results{margin-top:40px;margin-left:10px;}
+#results #count{padding:20px 0}
+#results ul{margin:0;padding:0}
+#results li{display:inline-block;border:1px solid #ddd;width:140px;height:200px;margin-right:10px;margin-bottom:10px;position:relative;}
+#results li a{position:absolute;bottom:0;background-color:#efefef;text-decoration:none;width:100%;text-indent:4px;height:30px;line-height:30px}

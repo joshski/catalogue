@@ -1,6 +1,13 @@
 extends layout
 
+block head
+    link(rel="stylesheet", href="/stylesheets/detail.css")
+
 block content
-    div#detail
+
+    #results
+      &nbsp;
+
+    #detail
         h1= item.name
         div= item.price

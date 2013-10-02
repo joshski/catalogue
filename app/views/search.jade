@@ -1,21 +1,19 @@
 extends layout
 
+block head
+    link(rel="stylesheet", href="/stylesheets/search.css")
+
 block content
-    h1 Search
-    form#search
-        input(type='text', name='keywords', placeholder='keywords', value="#{criteria.keywords || ''}")
-        input(type='submit', value='Search')
-
-    h2 Results
-    #count
-        span= results.total
-        &nbsp;
-        span hits
-
     #results
+        #count
+            span= results.total
+            &nbsp;
+            span Items
+
         ul
             each hit in results.hits
                 li
                     a(href= '/items/' + hit.id)= hit.name
 
-    #detail &nbsp;
+    #detail
+        &nbsp;

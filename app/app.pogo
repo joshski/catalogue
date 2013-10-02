@@ -33,7 +33,11 @@ exports.create app (options) =
 
     app.get '/' @(req, res)
         repo.search (req.query) @(err, results)
-            res.render 'search' { criteria = req.query, results = results }
+            res.render 'search' {
+                criteria = req.query
+                results = results
+                show home page = req.query.keywords == ''
+            }
 
     app.get '/search.json' @(req, res)
         repo.search (req.query) @(err, results)

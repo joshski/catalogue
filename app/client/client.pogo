@@ -38,4 +38,4 @@ load (url) =
 find href for (event) =
     t = event.target
     if (t && t.get attribute)
-        return (t.get attribute "href")
+        t.get attribute "href"

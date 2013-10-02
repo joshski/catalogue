@@ -18,6 +18,7 @@
     "pogoify": "0.0.1",
     "browserify-middleware": "~1.17.2",
     "history.js": "~1.8.0",
-    "routism": "0.0.2"
+    "routism": "0.0.2",
+    "stylus": "~0.38.0"
   }
 }

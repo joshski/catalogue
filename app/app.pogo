@@ -1,7 +1,11 @@
 express = require 'express'
 browserify = require 'browserify-middleware'
 pogoify = require 'pogoify'
+stylus = require 'stylus'
 bundle = require './client/bundle'
+
+views directory = "#(__dirname)/views"
+public directory = "#(__dirname)/public"
 
 browserify.settings { transform = ['pogoify'] }
 
@@ -10,7 +14,16 @@ exports.create app (options) =
 
     app = express()
     app.set 'view engine' 'jade'
-    app.set 'views' "#(__dirname)/views"
+    app.set 'views' (views directory)
+
+    app.use(stylus.middleware {
+        src = views directory
+        dest = public directory
+        compile (str, path) =
+            stylus(str).set('filename', path).set('compress', true)
+    })
+
+    app.use(express.static(public directory))
 
     app.get '/bundle.js' @(req, res)
         res.set({ 'Content-Type' = 'text/javascript' })

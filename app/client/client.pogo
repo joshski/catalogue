@@ -37,6 +37,9 @@ bind history () =
         load (state.url)
 
     document.body.add event listener "click" @(event)
+        if (event.meta key || event.ctrl key)
+            return
+
         href = find href for (event)
         if (href)
             event.prevent default ()

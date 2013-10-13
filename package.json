@@ -19,6 +19,8 @@
     "browserify-middleware": "~1.17.2",
     "history.js": "~1.8.0",
     "routism": "0.0.2",
-    "stylus": "~0.38.0"
+    "stylus": "~0.38.0",
+    "zombie": "~2.0.0-alpha23",
+    "history.js": "git://github.com/browserstate/history.js.git"
   }
 }

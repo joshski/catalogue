@@ -1,4 +1,6 @@
 routism = require 'routism'
+require '../../node_modules/history.js/scripts/compressed/history.js'
+require '../../node_modules/history.js/scripts/compressed/history.adapter.native.js'
 
 current search uri = nil
 
@@ -60,3 +62,4 @@ supports history = not(not(window.history @and history.pushState))
 
 if (supports history)
     bind history()
+    $("body").add class("client-ready")

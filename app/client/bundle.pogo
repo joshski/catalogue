@@ -1,8 +1,6 @@
 files = [
     'jquery.js'
     'uri.js'
-    'history.js'
-    'history.adapter.native.js'
 ]
 
 fs = require 'fs'

@@ -7,7 +7,13 @@ bundle = require './client/bundle'
 views directory = "#(__dirname)/views"
 public directory = "#(__dirname)/public"
 
-browserify.settings { transform = ['pogoify'] }
+browserify.settings {
+    transform = ['pogoify']
+    noParse = [
+        require.resolve '../node_modules/history.js/scripts/compressed/history.js'
+        require.resolve '../node_modules/history.js/scripts/compressed/history.adapter.native.js'
+    ]
+}
 
 exports.create app (options) =
     repo = options.repository

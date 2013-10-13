@@ -2,7 +2,6 @@ express = require 'express'
 browserify = require 'browserify-middleware'
 pogoify = require 'pogoify'
 stylus = require 'stylus'
-bundle = require './client/bundle'
 
 views directory = "#(__dirname)/views"
 public directory = "#(__dirname)/public"
@@ -10,6 +9,7 @@ public directory = "#(__dirname)/public"
 browserify.settings {
     transform = ['pogoify']
     noParse = [
+        require.resolve 'jquery'
         require.resolve '../node_modules/history.js/scripts/compressed/history.js'
         require.resolve '../node_modules/history.js/scripts/compressed/history.adapter.native.js'
     ]
@@ -30,10 +30,6 @@ exports.create app (options) =
     })
 
     app.use(express.static(public directory))
-
-    app.get '/bundle.js' @(req, res)
-        res.set({ 'Content-Type' = 'text/javascript' })
-        res.send (bundle.render())
 
     app.get '/client.js' (browserify "#(__dirname)/client/client.pogo")
 

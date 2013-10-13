@@ -1,4 +1,7 @@
+$ = require 'jquery'
+URI = require 'URIjs'
 routism = require 'routism'
+
 require '../../node_modules/history.js/scripts/compressed/history.js'
 require '../../node_modules/history.js/scripts/compressed/history.adapter.native.js'
 

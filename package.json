@@ -17,10 +17,11 @@
     "jade": "~0.35.0",
     "pogoify": "0.0.1",
     "browserify-middleware": "~1.17.2",
-    "history.js": "~1.8.0",
+    "history.js": "git://github.com/browserstate/history.js.git",
     "routism": "0.0.2",
     "stylus": "~0.38.0",
     "zombie": "~2.0.0-alpha23",
-    "history.js": "git://github.com/browserstate/history.js.git"
+    "jquery": "~1.8.3",
+    "URIjs": "~1.11.2"
   }
 }

@@ -23,7 +23,8 @@ enhance anchors () =
         href = find href for (event)
         if (href)
             event.prevent default ()
-            History.push state ({ url = href }, href, href)
+            title = $(event.target).attr('title')
+            History.push state ({ url = href, title = title }, title, href)
             return (false)
 
 enhance forms () =

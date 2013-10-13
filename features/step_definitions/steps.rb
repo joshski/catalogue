@@ -30,4 +30,5 @@ end
 
 Then(/^I should see product details$/) do
   page.should have_css("h1", "green skateboard")
+  page.title.should == "green skateboard"
 end

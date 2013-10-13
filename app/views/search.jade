@@ -1,5 +1,8 @@
 extends layout
 
+block title
+  = 'Search Results'
+
 block head
     link(rel="stylesheet", href="/stylesheets/search.css")
 
@@ -13,7 +16,7 @@ block content
         ul
             each hit in results.hits
                 li
-                    a(href= '/items/' + hit.id)= hit.name
+                    a(href= '/items/' + hit.id, title = hit.name)= hit.name
 
     #detail
         &nbsp;

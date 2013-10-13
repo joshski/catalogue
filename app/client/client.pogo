@@ -1,9 +1,9 @@
+// https://github.com/substack/node-browserify/issues/326
+require './browserify.pogo'
+
 $ = require 'jquery'
 URI = require 'URIjs'
 routism = require 'routism'
-
-require '../../node_modules/history.js/scripts/compressed/history.js'
-require '../../node_modules/history.js/scripts/compressed/history.adapter.native.js'
 
 current search uri = nil
 

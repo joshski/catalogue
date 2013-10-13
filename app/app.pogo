@@ -8,11 +8,7 @@ public directory = "#(__dirname)/public"
 
 browserify.settings {
     transform = ['pogoify']
-    noParse = [
-        require.resolve 'jquery'
-        require.resolve '../node_modules/history.js/scripts/compressed/history.js'
-        require.resolve '../node_modules/history.js/scripts/compressed/history.adapter.native.js'
-    ]
+    no parse = require './client/browserify'.no parse()
 }
 
 exports.create app (options) =
@@ -31,7 +27,12 @@ exports.create app (options) =
 
     app.use(express.static(public directory))
 
-    app.get '/client.js' (browserify "#(__dirname)/client/client.pogo")
+    settings = {
+        basedir = "#(__dirname)/client/"
+        extensions = ['.js', '.pogo']
+    }
+
+    app.get '/client.js' (browserify "#(__dirname)/client/client.pogo" (settings))
 
     app.get '/' @(req, res)
         repo.search (req.query) @(err, results)

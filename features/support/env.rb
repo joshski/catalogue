@@ -2,10 +2,20 @@ require 'cappie'
 
 driver = :selenium
 
+module WaitsForClientReady
+  def visit(url)
+    result = super
+    page.should have_css("body.client-ready")
+    result
+  end
+end
+
 if ENV["MECHANIZE"] == "true"
   require 'capybara/mechanize'
   driver = :mechanize
   Capybara.app = true
+else
+  World(WaitsForClientReady)
 end
 
 Cappie.start(

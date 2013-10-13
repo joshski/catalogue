@@ -1,29 +1,9 @@
+// need explicit .pogo extension
 // https://github.com/substack/node-browserify/issues/326
 require './browserify.pogo'
-
+routes = require './routes.pogo'
 $ = require 'jquery'
 URI = require 'URIjs'
-routism = require 'routism'
-
-current search uri = nil
-
-search (uri) =
-    $('#detail').fade out 100
-    u = uri.to string()
-    if (current search uri != u)
-        $('#results').html("")
-        $('#results').load(u + ' #results > *')
-        current search uri := u
-
-detail (uri) =
-    $('#detail').html("")
-    $('#detail').fade in 100
-    $('#detail').load(uri.to string() + ' #detail > *')
-
-routes = routism.compile [
-    { pattern = '/', route = search }
-    { pattern = '/items/:id', route = detail }
-]
 
 load (url) =
     uri = @new URI(url)

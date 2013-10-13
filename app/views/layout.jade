@@ -7,9 +7,14 @@ html(lang="en")
         block head
     body
         #header
-          form(id='search', action='/', method='GET')
-              input(type='text', name='keywords', placeholder='keywords')
-              input(type='submit', value='Search')
+            form(id='search', action='/', method='GET')
+                input(type='text', name='keywords', placeholder='keywords')
+                input(type='submit', value='Search')
 
-        block content
+        #results
+            block results
+
+        #detail
+            block detail
+
         script(type="text/javascript", src="/client.js")

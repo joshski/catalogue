@@ -6,11 +6,6 @@ block title
 block head
     link(rel="stylesheet", href="/stylesheets/detail.css")
 
-block content
-
-    #results
-      &nbsp;
-
-    #detail
-        h1= item.name
-        div= item.price
+block detail
+    h1= item.name
+    div= item.price

@@ -15,12 +15,7 @@ find href for (event) =
     if (t && t.get attribute)
         t.get attribute "href"
 
-bind history () =
-
-    History.Adapter.bind (window, 'statechange')
-        state = History.get state()
-        load (state.url)
-
+enhance anchors () =
     document.body.add event listener "click" @(event)
         if (event.meta key || event.ctrl key)
             return
@@ -31,6 +26,7 @@ bind history () =
             History.push state ({ url = href }, href, href)
             return (false)
 
+enhance forms () =
     for each @(form) in (document.forms)
         if (form.method.to lower case() == "get")
             form.add event listener "submit" @(event)
@@ -40,6 +36,13 @@ bind history () =
                 History.push state ({ url = href }, href, href)
                 return (false)
 
+bind history () =
+    History.Adapter.bind (window, 'statechange')
+        state = History.get state()
+        load (state.url)
+
+    enhance anchors ()
+    enhance forms ()
 
 supports history = not(not(window.history @and history.pushState))
 

@@ -2,9 +2,11 @@ express = require 'express'
 browserify = require 'browserify-middleware'
 pogoify = require 'pogoify'
 stylus = require 'stylus'
+routes = require './routes'
 
-views directory = "#(__dirname)/views"
-public directory = "#(__dirname)/public"
+views dir = "#(__dirname)/views"
+public dir = "#(__dirname)/public"
+client dir = "#(__dirname)/client"
 
 browserify.settings {
     transform = ['pogoify']
@@ -12,42 +14,26 @@ browserify.settings {
 }
 
 exports.create app (options) =
-    repo = options.repository
-
     app = express()
     app.set 'view engine' 'jade'
-    app.set 'views' (views directory)
+    app.set 'views' (views dir)
 
     app.use(stylus.middleware {
-        src = views directory
-        dest = public directory
+        src = views dir
+        dest = public dir
         compile (str, path) =
             stylus(str).set('filename', path).set('compress', true)
     })
 
-    app.use(express.static(public directory))
+    app.use(express.static(public dir))
 
     settings = {
-        basedir = "#(__dirname)/client/"
+        basedir = client dir
         extensions = ['.js', '.pogo']
     }
 
-    app.get '/client.js' (browserify "#(__dirname)/client/client.pogo" (settings))
+    app.get '/client.js' (browserify "#(client dir)/client.pogo" (settings))
 
-    app.get '/' @(req, res)
-        repo.search (req.query) @(err, results)
-            res.render 'search' {
-                criteria = req.query
-                results = results
-                show home page = req.query.keywords == ''
-            }
-
-    app.get '/search.json' @(req, res)
-        repo.search (req.query) @(err, results)
-            res.json (results)
-
-    app.get '/items/:id' @(req, res)
-        repo.find (req.params.id) @(err, item)
-            res.render 'detail' { item = item }
+    routes.render (app, options)
 
     app

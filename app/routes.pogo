@@ -9,10 +9,6 @@ exports.render (app, options) =
                 show home page = req.query.keywords == ''
             }
 
-    app.get '/search.json' @(req, res)
-        repo.search (req.query) @(err, results)
-            res.json (results)
-
     app.get '/items/:id' @(req, res)
         repo.find (req.params.id) @(err, item)
             res.render 'detail' { item = item }

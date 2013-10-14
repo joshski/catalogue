@@ -6,7 +6,6 @@ exports.render (app, options) =
             res.render 'search' {
                 criteria = req.query
                 results = results
-                show home page = req.query.keywords == ''
             }
 
     app.get '/items/:id' @(req, res)
